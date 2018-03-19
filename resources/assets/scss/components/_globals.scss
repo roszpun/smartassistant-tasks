@@ -8,3 +8,36 @@ body {
 [v-cloak] {
     display: none;
 }
+
+.page-wrapper {
+    position: relative;
+}
+
+// changing stuff when `magic mode` on
+.magic-button {
+    position: fixed;
+    top: 0;
+    right: 30px;
+    width: 100px;
+    background: $green-p1;
+    display: block;
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+    border: none;
+    z-index: 1;
+}
+
+.magic-mode {
+    h1,
+    h2,
+    h3,
+    strong {
+        color: $green-p1 !important;
+    }
+    .products {
+        h1 {
+            background: $gray-p1;
+        }
+    }
+}

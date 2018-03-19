@@ -1,7 +1,9 @@
+// loading medium styling for medium media query
 @media (min-width: 481px) and (max-width: 768px) {
     @import "../responsive/_medium";
 }
 
+// loading small styling for small media query
 @media (min-width: 320px) and (max-width: 480px) {
     @import "../responsive/_small";
 }

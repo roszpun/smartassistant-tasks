@@ -1,3 +1,4 @@
+// mixins file 
 @mixin center($horizontal: true, $vertical: true) {
     position: absolute;
     @if ($horizontal and $vertical) {
@@ -12,25 +13,5 @@
     @else if ($vertical) {
         top: 50%;
         transform: translate(0, -50%);
-    }
-}
-
-@mixin transition-color {
-    transition: color $duration ease-in-out;
-}
-
-@mixin transition-all {
-    transition: all $duration ease-in-out;
-}
-
-@mixin radius($val) {
-    border-radius: ($val);
-}
-
-@mixin clearfix {
-    &:after {
-        display: table;
-        clear: both;
-        content: '';
     }
 }

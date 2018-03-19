@@ -1,0 +1,104 @@
+doctype html
+html
+  head
+    title SMARTASSISTANT Angular JS Exercise
+    // AngularJS
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js')
+    // AngularJs app definition
+    script.
+        angular.module('AngularJsExercise.services', []).
+        factory('angularJsServices', function($http) {
+            var advisorAPI = {};
+            <!-- Returns advisor dummy data  -->
+            advisorAPI.getAdvisor = function() {
+                var currentTimeStamp = new Date().getTime();
+                return {
+                    name: "SmartAssistantSampleAdvisor",
+                    pages: [{
+                            id: 1,
+                            pageNum: 0,
+                            pageText: "First Page",
+                            questions: [{
+                                id: 11,
+                                questionText: "I am looking for a new printer for...",
+                                questionType: "RADIO_BUTTONS",
+                                mandatory: true
+                            }]
+                        },
+                        {
+                            id: 2,
+                            pageNum: 1,
+                            pageText: "Second Page",
+                            questions: [{
+                                    id: 22,
+                                    questionText: "Printer should have..",
+                                    questionType: "CHECKBOX",
+                                    mandatory: false
+                                },
+                                {
+                                    id: 22,
+                                    questionText: "What color ?",
+                                    questionType: "CHECKBOX",
+                                    mandatory: false
+                                }
+                            ]
+                        },
+                        {
+                            id: 3,
+                            pageNum: 2,
+                            pageText: "Third Page",
+                            questions: [{
+                                id: 33,
+                                questionText: "I am looking for a new printer for...",
+                                questionType: "RADIO_BUTTONS",
+                                mandatory: true
+                            }]
+                        },
+                        {
+                            id: 4,
+                            pageNum: 3,
+                            pageText: "Fourth Page",
+                            questions: [{
+                                    id: 44,
+                                    questionText: "Price range",
+                                    questionType: "SINGLE_SLIDER",
+                                    mandatory: false
+                                },
+                                {
+                                    id: 444,
+                                    questionText: "Printer size",
+                                    questionType: "DOUBLE_SLIDER",
+                                    mandatory: false
+                                }
+                            ]
+                        }
+                    ]
+                };
+            };
+            return advisorAPI;
+        });
+        angular.module('AngularJsExercise.controllers', []).
+        controller('angularJsExerciseController', function($scope, angularJsServices) {
+            $scope.advisor = angularJsServices.getAdvisor();
+        });
+        angular.module('AngularJsExercise.filters', [])
+            .filter('angularJsExerciseFilter', function() {
+                <!-- implement me -->
+            });
+        angular.module('AngularJsExercise.controllers')
+            .directive('advisorPage', function() {
+                return {
+                    <!-- add other properties -->
+                    templateUrl: 'advisorPage.template'
+                };
+            });
+        angular.module('AngularJsExercise', [
+            'AngularJsExercise.services',
+            'AngularJsExercise.controllers',
+            'AngularJsExercise.filters'
+        ]);
+  body
+    div(ng-app='AngularJsExercise', ng-controller='angularJsExerciseController')
+      // display pages with questions
+      // advisorPage directive template
+      script(type='text/ng-template', id='advisorPage.template').

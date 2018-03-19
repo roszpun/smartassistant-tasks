@@ -22,6 +22,7 @@ gulp.task('views', function buildHTML() {
 //Watch task
 
 gulp.task('watch', function() {
+    gulp.run('default');
     gulp.watch('./resources/assets/**/*.scss', ['styles']);
     gulp.watch('./resources/assets/pug/**/*.pug', ['views']);
     gulp.watch('./resources/assets/js/*.js', ['compress']);
