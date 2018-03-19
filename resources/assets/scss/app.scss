@@ -1,11 +1,8 @@
-// load utils
 @import 'utils/_vars';
 @import 'utils/_mixins';
 @import 'utils/_grid';
-//load components
 @import 'components/_globals';
 @import 'components/_header';
 @import 'components/_steps';
 @import 'components/_products';
-// load responsive files
 @import 'responsive/_responsive';
