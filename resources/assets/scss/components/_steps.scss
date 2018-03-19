@@ -1,0 +1,180 @@
+.step-container {
+    background: $purple-p2;
+    float: left;
+    width: 20%;
+    margin-top: 10px;
+    position: relative;
+    &:last-child .step {
+        &:after,
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.step {
+    z-index: 2;
+    padding: 15px;
+    color: #fff;
+    background: $purple-p2;
+    font-size: 18px;
+    text-align: center;
+    &:after,
+    &:before {
+        left: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        z-index: 3;
+    }
+    &:after {
+        border-color: rgba(0, 0, 0, 0);
+        border-left-color: $purple-p2;
+        border-width: 28px;
+        margin-top: -28px;
+    }
+    &:before {
+        border-color: rgba(255, 255, 255, 0);
+        border-left-color: #fff;
+        border-width: 32px;
+        margin-top: -32px;
+    }
+}
+
+.active {
+    background: $purple-p1;
+    .step {
+        background: $purple-p1;
+        &:after {
+            border-left-color: $purple-p1;
+        }
+    }
+}
+
+.step-container.active>div {
+    background: $purple-p1;
+}
+
+.faces,
+.glasses {
+    margin-top: 30px;
+}
+
+.pagination {
+    h2 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 300;
+        margin-top: 30px;
+        color: $purple-p1;
+    }
+}
+
+.photo-wrapper {
+    text-align: center;
+    .image {
+        margin: 0 auto;
+        width: 90%;
+        height: 220px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+.glasses {
+    .image {
+        width: 100%;
+    }
+}
+
+.photo-details {
+    padding: 10px;
+    background: $gray-p1;
+    i {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        display: inline-block;
+        margin-left: 5px;
+        color: #fff;
+        background: $purple-p1;
+    }
+    input[type="checkbox"] {
+        display: none;
+    }
+    input[type="checkbox"]+label {
+        position: relative;
+        padding-left: 25px;
+        &:before {
+            cursor: pointer;
+            position: absolute;
+            content: '';
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid lightgray;
+            background: #fff;
+            border-radius: 2px;
+            font-family: FontAwesome;
+            line-height: 20px;
+            text-align: center;
+            color: $purple-p1;
+        }
+    }
+    input[type="checkbox"]:checked+label {
+        &:before {
+            content: '\f00c';
+        }
+    }
+}
+
+.action-buttons {
+    .right-button {
+        text-align: right;
+    }
+    .button {
+        position: relative;
+        color: $purple-p1;
+        text-transform: uppercase;
+        margin-top: 30px;
+        font-size: 18px;
+        line-height: 50px;
+        cursor: pointer;
+        &:after {
+            content: '\f053';
+            font-family: FontAwesome;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: $purple-p1;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+    }
+    .right-button {
+        .button {
+            padding-right: 60px;
+            &:after {
+                content: '\f054';
+                left: 100%;
+                transform: translate(-100%, 0);
+            }
+        }
+    }
+    .left-button {
+        .button {
+            padding-left: 60px;
+            &:after {
+                left: 0;
+            }
+        }
+    }
+}

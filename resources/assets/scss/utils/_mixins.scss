@@ -1,0 +1,36 @@
+@mixin center($horizontal: true, $vertical: true) {
+    position: absolute;
+    @if ($horizontal and $vertical) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    @else if ($horizontal) {
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    @else if ($vertical) {
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+}
+
+@mixin transition-color {
+    transition: color $duration ease-in-out;
+}
+
+@mixin transition-all {
+    transition: all $duration ease-in-out;
+}
+
+@mixin radius($val) {
+    border-radius: ($val);
+}
+
+@mixin clearfix {
+    &:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+}

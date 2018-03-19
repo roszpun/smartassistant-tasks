@@ -1,0 +1,20 @@
+.logo-container {
+    h1,
+    h2 {
+        font-weight: 300;
+        color: $purple-p1;
+    }
+    h1 {
+        font-size: 48px;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        letter-spacing: 5px;
+    }
+}
+
+.header-image {
+    img {
+        width: 100%;
+        height: auto;
+    }
+}

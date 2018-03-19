@@ -1,0 +1,107 @@
+extends ../template.pug
+block title 
+    |Task 1
+block content
+    #steps-app(v-cloak="true")
+        header
+            .container
+                .row
+                    .logo-container
+                        .col-md-6.col-sm-12 
+                            h1 Brillenberater
+                            h2 In wenigen Schritten zur perfekten Brille
+                    .header-image
+                        .col-md-6.col-sm-12
+                            img(src="assets/images/header.jpg")
+                .steps-row
+                    .row: .col-md-12
+                        .step-container(v-for="step in steps" :class="{'active' : current_page === step}")
+                            .step {{step}}
+        .pagination
+            .container
+                .row
+                    .col-md-12
+                        h2(v-if="current_page == 1") Welche Gesichtsform haben Sie?
+                        h2(v-if="current_page == 2") Weleche Anforderungen stellen Sie an die Fassung?
+                .row
+                    .page(v-for="page in pages")
+                        .glasses(v-if="current_page == 2")
+                            .col-md-4.col-xs-12.col-sm-6(v-for="face in page.glasses")
+                                .photo-wrapper 
+                                    .image(style="background-image: url(assets/images/glasses2.png)") 
+                                .photo-details
+                                    input(type="checkbox" :id="face")
+                                    label(:for="face") Bruchsicher & rostfrei Metall-Fassungen
+                                    i.fa.fa-info
+                        .faces(v-if="current_page == 1")
+                            .col-md-3.col-xs-12.col-sm-6(v-for="face in page.faces")
+                                .photo-wrapper
+                                    .image(style="background-image: url(assets/images/face1.jpg)")
+                                .photo-details
+                                    input(type="checkbox" :id="face")
+                                    label(:for="face") Ecking
+                                    i.fa.fa-info
+                .action-buttons
+                    .row
+                        .col-md-2.left-button
+                            .button(v-if="current_page != 1" @click="previous_page()") Zuruck
+                        .col-md-2.col-md-offset-8.right-button
+                            .button(v-if="current_page != 2" @click="next_page()") Weiter
+        .products
+            .container
+                .row
+                    .col-md-12
+                        h1 Produkte, die Ihren Wunschen entsprechen
+                .products-list
+                    .product(v-for="index in 2")
+                        .row
+                            .col-md-5.col-sm-12
+                                .product-image
+                                    img(src="assets/images/glasses.jpg")
+                            .col-md-4.col-sm-6
+                                .product-details
+                                    h3 funchal
+                                    ul 
+                                        li.checked Brillen typ: Damen, Heren
+                                        li.checked Brillen typ: Damen, Heren
+                                        li.checked Brillen typ: Damen, Heren
+                                        li.checked Brillen typ: Damen, Heren
+                                        li.checked Brillen typ: Damen, Heren
+                                        li Material: Metall
+                                        li Material: Metall
+                                        li Material: Metall
+                                        li.show-more mehr Attribute anzeighen
+                            .col-md-3.col-sm-6
+                                .product-actions
+                                    .price
+                                        span Rahmen inl. Glaser & services
+                                        strong ab 39,90 PLN
+                                    button
+                                        i.fa.fa-shopping-cart
+                                        span Zum produkt
+                                        i.fa.fa-arrow-right
+
+block script
+    script.
+        var app = new Vue({
+            el: '#steps-app',
+            data: {
+                current_page: 1,
+                steps: 5,
+                pages: [
+                    {
+                        faces: 4,
+                        glasses: 3
+                    }
+                ]
+                 
+            },
+            methods:{
+                next_page(){
+                    this.current_page++;
+                },
+                previous_page(){
+                    this.current_page--;
+                }
+            }
+        })
